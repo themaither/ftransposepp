@@ -16,7 +16,7 @@ struct database {
     std::fstream source{path / ".trdb/config/source"};
     std::string source_str;
     std::getline(source, source_str);
-    database.sourcepath = auto{std::move(source_str)};
+    database.sourcepath = {std::move(source_str)};
     return database;
   }
 };

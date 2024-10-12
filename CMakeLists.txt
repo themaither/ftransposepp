@@ -5,7 +5,8 @@ add_executable(ftrq src/ftrq.cpp)
 target_include_directories(ftrq PRIVATE src)
 target_compile_features(ftrq PUBLIC cxx_std_23)
 
-include(CTest)
+enable_testing()
 
 add_subdirectory("test")
-add_test(test/query "ls")
+add_test(FtrqInput test/input.sh)
+add_test(FtrQuery test/query)
