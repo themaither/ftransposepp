@@ -1,10 +1,10 @@
 #pragma once
 
 #include "database.h"
+#include "query.h"
 #include <filesystem>
-#include <system_error>
+#include <ranges>
 #include <unordered_set>
-#include <vector>
 
 namespace ftr {
 
@@ -12,6 +12,7 @@ struct context {
   ftr::database &db;
 
   std::unordered_set<std::filesystem::path> selection;
+  std::unordered_set<std::filesystem::path> target;
 
   context(ftr::database &db) : db(db){};
 
@@ -21,5 +22,10 @@ struct context {
       selection.emplace(node.path());
     };
   };
+
+  void apply_query(ftr::query<std::ranges::ref_view<
+                       std::unordered_set<std::filesystem::path>>> &&query) {
+    target = std::move(query.result);
+  }
 };
 } // namespace ftr
