@@ -1,3 +1,5 @@
+#include "ftr/context.h"
+#include "ftr/database.h"
 #include "ftrq/command_executor.h"
 #include "ftrq/command_list.h"
 #include "ftrq/command_reader.h"
@@ -17,9 +19,11 @@ void handle_error(enum ftrq::command_executor::error &error) {
 }
 
 int main() {
+  ftr::database database;
+  ftr::context context{database};
   ftrq::tokenizer tokenizer;
   ftrq::command_list list = ftrq::command_list::get_default_commands();
-  ftrq::command_executor command_executor{list};
+  ftrq::command_executor command_executor{list, context};
   ftrq::command_reader command_reader{list};
 
   tokenizer.on_token_accepted = [&](std::string &&token) {
