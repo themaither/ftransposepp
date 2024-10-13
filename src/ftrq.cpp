@@ -31,6 +31,7 @@ int main() {
     if (command_reader.done) {
       command_executor.execute(std::move(command_reader.command));
       handle_error(command_executor.error);
+      command_reader.~command_reader();
       new (&command_reader) ftrq::command_reader{list};
     }
   };
