@@ -9,7 +9,7 @@ struct database {
   std::filesystem::path dbpath;
   std::filesystem::path sourcepath;
 
-  database(std::filesystem::path &&path) {
+  database(const std::filesystem::path &path) {
     std::filesystem::path &&absolute = std::filesystem::absolute(path);
     dbpath = absolute / ".trdb";
     auto sourcetarget = dbpath / "config/source";
