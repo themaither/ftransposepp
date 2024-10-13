@@ -1,5 +1,5 @@
 #!/usr/bin/sh
 
-mkdir test_source
-touch test_source/{a..z}.txt
-ftrcreate test_source test_db
+mkdir test/test_source
+touch test/test_source/{a..z}.txt
+ftrcreate test/test_source test/test_db
