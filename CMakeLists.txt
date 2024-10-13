@@ -7,7 +7,4 @@ target_compile_features(ftrq PUBLIC cxx_std_23)
 
 enable_testing()
 
-add_subdirectory("test")
-add_test(FtrqInput test/input.sh)
-add_test(FtrQuery test/query)
-add_test(FtrDatabase test/database)
+add_subdirectory(test)
