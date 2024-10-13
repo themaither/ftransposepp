@@ -2,22 +2,25 @@
 
 #include <filesystem>
 #include <fstream>
+#include <ios>
 #include <string>
 namespace ftr {
 struct database {
   std::filesystem::path dbpath;
   std::filesystem::path sourcepath;
 
-  static ftr::database open(std::filesystem::path &&path) {
-    ftr::database database;
+  database(std::filesystem::path &&path) {
     std::filesystem::path &&absolute = std::filesystem::absolute(path);
-    database.dbpath = path / ".trdb";
-
-    std::fstream source{path / ".trdb/config/source"};
+    dbpath = absolute / ".trdb";
+    auto sourcetarget = dbpath / "config/source";
+    std::ifstream source(sourcetarget, std::ios_base::in);
     std::string source_str;
-    std::getline(source, source_str);
-    database.sourcepath = {std::move(source_str)};
-    return database;
+
+    while (source.good()) {
+      source_str += source.get();
+    }
+
+    sourcepath = {std::move(source_str)};
   }
 };
 } // namespace ftr
