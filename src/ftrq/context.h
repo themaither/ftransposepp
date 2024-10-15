@@ -24,9 +24,6 @@ struct context {
     };
   };
 
-  void apply_query(ftrq::query<std::ranges::ref_view<
-                       std::unordered_set<std::filesystem::path>>> &&query) {
-    target = std::move(query.result);
-  }
+  void apply_query(ftrq::query &&query) { target = std::move(query.result); }
 };
 } // namespace ftrq

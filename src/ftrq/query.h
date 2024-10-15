@@ -5,15 +5,10 @@
 #include <ranges>
 #include <unordered_set>
 namespace ftrq {
-template <typename Range>
-  requires std::ranges::view<Range> &&
-           std::same_as<std::ranges::range_value_t<Range>,
-                        std::filesystem::path>
 struct query {
-  const Range input;
+  const std::unordered_set<std::filesystem::path> &input;
   using Path = std::filesystem::path;
   using Set = std::unordered_set<ftrq::model::file_mapping>;
-  ;
   Set result;
 
   void all() { result = std::ranges::to<Set>(input); }
