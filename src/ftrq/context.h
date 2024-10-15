@@ -1,10 +1,9 @@
 #pragma once
 
-#include "ftrq/model/file_mapping.h"
 #include <filesystem>
 #include <ftr/database.h>
+#include <ftrq/model/file_mapping.h>
 #include <ftrq/query.h>
-#include <ranges>
 #include <unordered_set>
 
 namespace ftrq {
