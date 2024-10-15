@@ -1,8 +1,8 @@
 #pragma once
 
-#include "command.h"
-#include "command_list.h"
 #include <cstddef>
+#include <ftrq/command.h>
+#include <ftrq/command_list.h>
 #include <print>
 #include <string>
 #include <vector>

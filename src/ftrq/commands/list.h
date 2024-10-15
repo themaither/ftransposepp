@@ -1,5 +1,5 @@
 #pragma once
-#include "../debug.h"
+#include <ftrq/debug.h>
 namespace ftrq::commands {
 template <typename T> inline void export_commands(T &target) {
   target[".exit"] = {.argument_count = 0, .execute = [](auto, auto) {

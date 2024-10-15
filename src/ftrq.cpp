@@ -1,11 +1,11 @@
-#include "ftr/database.h"
-#include "ftr/ftrponder.h"
-#include "ftrq/command_executor.h"
-#include "ftrq/command_list.h"
-#include "ftrq/command_reader.h"
-#include "ftrq/context.h"
-#include "ftrq/tokenizer.h"
 #include <filesystem>
+#include <ftr/database.h>
+#include <ftr/ftrponder.h>
+#include <ftrq/command_executor.h>
+#include <ftrq/command_list.h>
+#include <ftrq/command_reader.h>
+#include <ftrq/context.h>
+#include <ftrq/tokenizer.h>
 #include <iostream>
 
 void handle_error(enum ftrq::command_executor::error &error) {

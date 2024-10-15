@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../ftr/database.h"
-#include "query.h"
 #include <filesystem>
+#include <ftr/database.h>
+#include <ftrq/query.h>
 #include <ranges>
 #include <unordered_set>
 

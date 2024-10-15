@@ -1,8 +1,8 @@
 #pragma once
 
-#include "commands/list.h"
-#include "context.h"
 #include <cstdlib>
+#include <ftrq/commands/list.h>
+#include <ftrq/context.h>
 #include <functional>
 #include <span>
 #include <string>

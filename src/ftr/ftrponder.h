@@ -2,7 +2,6 @@
 
 #include <array>
 #include <filesystem>
-#include <iostream>
 #include <string>
 #include <sys/types.h>
 #include <unistd.h>
