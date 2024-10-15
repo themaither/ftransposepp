@@ -1,8 +1,8 @@
 #pragma once
 
-#include <ftrq/command.h>
 #include <ftrq/command_list.h>
 #include <ftrq/context.h>
+#include <ftrq/model/command.h>
 namespace ftrq {
 
 struct command_executor {
