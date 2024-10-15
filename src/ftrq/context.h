@@ -1,12 +1,12 @@
 #pragma once
 
-#include "database.h"
+#include "../ftr/database.h"
 #include "query.h"
 #include <filesystem>
 #include <ranges>
 #include <unordered_set>
 
-namespace ftr {
+namespace ftrq {
 
 struct context {
   ftr::database &db;
@@ -23,9 +23,9 @@ struct context {
     };
   };
 
-  void apply_query(ftr::query<std::ranges::ref_view<
+  void apply_query(ftrq::query<std::ranges::ref_view<
                        std::unordered_set<std::filesystem::path>>> &&query) {
     target = std::move(query.result);
   }
 };
-} // namespace ftr
+} // namespace ftrq

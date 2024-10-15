@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../ftr/context.h"
 #include "commands/list.h"
+#include "context.h"
 #include <cstdlib>
 #include <functional>
 #include <span>
@@ -11,7 +11,7 @@ namespace ftrq {
 
 struct command_info {
   size_t argument_count;
-  std::function<void(ftr::context &, std::span<std::string>)> execute;
+  std::function<void(ftrq::context &, std::span<std::string>)> execute;
 };
 
 struct command_list

@@ -1,9 +1,9 @@
-#include "ftr/context.h"
 #include "ftr/database.h"
 #include "ftr/ftrponder.h"
 #include "ftrq/command_executor.h"
 #include "ftrq/command_list.h"
 #include "ftrq/command_reader.h"
+#include "ftrq/context.h"
 #include "ftrq/tokenizer.h"
 #include <filesystem>
 #include <iostream>
@@ -24,7 +24,7 @@ ftr::database open_database() { return ftr::database{ftr::ponder()}; }
 
 int main() {
   ftr::database database = open_database();
-  ftr::context context{database};
+  ftrq::context context{database};
   ftrq::tokenizer tokenizer;
   ftrq::command_list list = ftrq::command_list::get_default_commands();
   ftrq::command_executor command_executor{list, context};

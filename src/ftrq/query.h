@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <ranges>
 #include <unordered_set>
-namespace ftr {
+namespace ftrq {
 template <typename Range>
   requires std::ranges::view<Range> &&
            std::same_as<std::ranges::range_value_t<Range>,
@@ -24,4 +24,4 @@ struct query {
     result.insert(range.begin(), range.end());
   }
 };
-} // namespace ftr
+} // namespace ftrq

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../ftr/context.h"
 #include "command.h"
 #include "command_list.h"
+#include "context.h"
 namespace ftrq {
 
 struct command_executor {
   const ftrq::command_list &command_list;
-  ftr::context &context;
+  ftrq::context &context;
 
   enum class error { NONE, COMMAND_NOT_FOUND } error = error::NONE;
 
