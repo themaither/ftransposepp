@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ftrq/model/file_mapping.h"
 #include <filesystem>
 #include <ranges>
 #include <unordered_set>
@@ -11,7 +12,8 @@ template <typename Range>
 struct query {
   const Range input;
   using Path = std::filesystem::path;
-  using Set = std::unordered_set<std::filesystem::path>;
+  using Set = std::unordered_set<ftrq::model::file_mapping>;
+  ;
   Set result;
 
   void all() { result = std::ranges::to<Set>(input); }

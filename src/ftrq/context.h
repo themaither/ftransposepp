@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ftrq/model/file_mapping.h"
 #include <filesystem>
 #include <ftr/database.h>
 #include <ftrq/query.h>
@@ -12,7 +13,7 @@ struct context {
   ftr::database &db;
 
   std::unordered_set<std::filesystem::path> selection;
-  std::unordered_set<std::filesystem::path> target;
+  std::unordered_set<ftrq::model::file_mapping> target;
 
   context(ftr::database &db) : db(db){};
 
