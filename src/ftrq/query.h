@@ -1,24 +1,19 @@
 #pragma once
 
 #include <filesystem>
-#include <ftrq/model/file_mapping.h>
-#include <ranges>
+#include <unordered_map>
 #include <unordered_set>
 namespace ftrq {
 struct query {
   const std::unordered_set<std::filesystem::path> &input;
-  using Path = std::filesystem::path;
-  using Set = std::unordered_set<ftrq::model::file_mapping>;
-  Set result;
+  std::unordered_map<std::filesystem::path, std::filesystem::path> result;
 
-  void all() { result = std::ranges::to<Set>(input); }
-
-  void contains(const char *part) {
-    auto range = input | std::ranges::views::filter([&](auto node) {
-                   return node.string().contains(part);
-                 });
-
-    result.insert(range.begin(), range.end());
+  void all() {
+    for (const auto &path : input) {
+      result[path] = path;
+    }
   }
+
+  void contains(const char *part) {}
 };
 } // namespace ftrq

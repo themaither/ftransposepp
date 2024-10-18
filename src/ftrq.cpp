@@ -4,8 +4,11 @@
 #include <ftrq/command_list.h>
 #include <ftrq/command_reader.h>
 #include <ftrq/context.h>
+#include <ftrq/debug.h>
 #include <ftrq/tokenizer.h>
 #include <iostream>
+#include <optional>
+#include <utility>
 
 void handle_error(enum ftrq::command_executor::error &error) {
   using type = ftrq::command_executor;
@@ -19,7 +22,19 @@ void handle_error(enum ftrq::command_executor::error &error) {
   }
 }
 
-ftr::database open_database() { return ftr::database{ftr::ponder()}; }
+struct pondererror_t {};
+[[noreturn]] void handle_error(pondererror_t) {
+  ftrq::debug::error("Not inside valid database");
+  exit(1);
+}
+
+ftr::database open_database() {
+  auto &&a = ftr::ponder();
+  if (not a) {
+    handle_error(pondererror_t{});
+  }
+  return ftr::database{a.value()};
+}
 
 int main() {
   ftr::database database = open_database();
