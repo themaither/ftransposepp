@@ -8,9 +8,9 @@ function assert
     EXIT=1
   fi
 }
-
-echo ".exit" | ./ftrq
+cd test_db
+echo ".exit" | ../../ftrq
 assert .exit
-echo ".echo 123" | ./ftrq
+echo ".echo 123" | ../../ftrq
 assert .echo 123
 exit $EXIT

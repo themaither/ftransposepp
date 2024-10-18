@@ -14,3 +14,6 @@ add_test(FtrDatabase database)
 add_executable(tests_are_in ftr/tests_are_in.cpp)
 target_include_directories(tests_are_in PRIVATE ../src)
 add_test(TestsAreIn tests_are_in)
+
+configure_file(ftr/input.sh input.sh COPYONLY)
+add_test(Input input.sh)
